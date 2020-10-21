@@ -20,9 +20,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static int WIDTH = 240;
-	private static int HEIGHT = 120;
-	private static int SCALE = 3;
+	public static int WIDTH = 240;
+	public static int HEIGHT = 120;
+	public static int SCALE = 3;
 
 	private Player player;
 
@@ -73,8 +73,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
 	@Override
 	public void run() {
+		//foca diretamente na janela do jogo
+		requestFocus();
+		
 		while (true) {
-
 			update();
 			render();
 
@@ -89,18 +91,18 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			player.right = true;;
+			player.setRight(true);
 		}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			player.left = true;
+			player.setLeft(true);
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			player.right = false;
+			player.setRight(false);
 		}else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			player.left = false;
+			player.setLeft(false);
 		}		
 	}
 

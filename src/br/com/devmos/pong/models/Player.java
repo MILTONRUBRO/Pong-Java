@@ -3,14 +3,16 @@ package br.com.devmos.pong.models;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import br.com.devmos.pong.main.Game;
+
 public class Player {
 	
 	private static final int WIDTH = 40;
 	private static final int HEIGHT = 10;
 	private int x = 100;
 	private int y = 110;
-	public  boolean right;
-	public boolean left;
+	private  boolean right;
+	private boolean left;
 	
 	public Player(int x, int y) {
 		this.x = x;
@@ -18,10 +20,18 @@ public class Player {
 	}
 
 	public void update() {
-		if(left) {
+		if(right) {
 			x++;
-		}else if(right) {
+		}else if(left) {
 			x--;
+		}
+		
+		if(x + WIDTH > Game.WIDTH) {
+			x =  Game.WIDTH - WIDTH;
+		}
+		
+		if(x < 0) {
+			x = 0;
 		}
 	}
 	
@@ -30,4 +40,20 @@ public class Player {
 		graphics.fillRect(x, y, WIDTH, HEIGHT);;
 	}
 
+	public boolean isRight() {
+		return right;
+	}
+
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+
+	public boolean isLeft() {
+		return left;
+	}
+
+	public void setLeft(boolean left) {
+		this.left = left;
+	}
+	
 }
