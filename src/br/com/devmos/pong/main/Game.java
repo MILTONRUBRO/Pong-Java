@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
+import br.com.devmos.pong.models.Ball;
+import br.com.devmos.pong.models.Enemy;
 import br.com.devmos.pong.models.Player;
 
 public class Game extends Canvas implements Runnable, KeyListener {
@@ -24,7 +26,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	public static int HEIGHT = 120;
 	public static int SCALE = 3;
 
-	private Player player;
+	public Player player;
+	public Enemy enemy;
+	public static Ball ball;
 
 	private BufferedImage layer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
@@ -32,6 +36,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		this.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		this.addKeyListener(this);
 		player = new Player(100, HEIGHT-10);
+		enemy = new Enemy(100, 0);
+		ball = new Ball(100, HEIGHT/2 -1);
 	}
 
 	public static void main(String[] args) {
@@ -50,6 +56,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
 	public void update() {
 		player.update();
+		enemy.update();
+		ball.update();
 	}
 
 	public void render() {
@@ -63,8 +71,12 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		Graphics graphics = layer.getGraphics();
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		//
 		player.render(graphics);
-
+		enemy.render(graphics);
+		ball.render(graphics);
+		
 		graphics = bs.getDrawGraphics();
 		
 		graphics.drawImage(layer, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
