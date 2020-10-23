@@ -26,8 +26,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	public static int HEIGHT = 120;
 	public static int SCALE = 3;
 
-	public Player player;
-	public Enemy enemy;
+	public static Player player;
+	public static Enemy enemy;
 	public static Ball ball;
 
 	private BufferedImage layer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
