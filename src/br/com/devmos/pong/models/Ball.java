@@ -16,16 +16,17 @@ public class Ball {
 	
 	private double dx;
 	private double dy;
-	private double speed = 1.2;
+	private double speed;
 
 	
 	public Ball(int x, int y) {
 		this.x = x;
 		this.y = y;
+		this.speed = 1.2;
 		
-		dx = new Random().nextGaussian();
-		dy = new Random().nextGaussian();
-
+		int angle = new Random().nextInt(80);
+		dx = Math.cos(Math.toRadians(angle));
+		dy = Math.cos(Math.toRadians(angle));
 	}
 	
 	public void update() {
@@ -37,9 +38,13 @@ public class Ball {
 		}
 		
 		if(y >= Game.HEIGHT) {
-			
+			System.out.println("Ponto do inimigo!");
+			new Game();
+			return;
 		}else if(y < 0) {
-			
+			System.out.println("Ponto nosso!!!");
+			new Game();
+			return;
 		}
 		
 		Rectangle bounds = new Rectangle((int)(x + (dx * speed)), (int)(y + (dy * speed)), WIDTH, HEIGHT);

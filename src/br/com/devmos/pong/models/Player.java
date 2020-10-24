@@ -8,7 +8,7 @@ import br.com.devmos.pong.main.Game;
 public class Player {
 	
 	private static final int WIDTH = 40;
-	private static final int HEIGHT = 10;
+	private static final int HEIGHT = 5;
 	private int x = 100;
 	private int y = 110;
 	private  boolean right;

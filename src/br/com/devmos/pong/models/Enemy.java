@@ -12,7 +12,7 @@ public class Enemy {
 	private double x;
 	private double y;
 	private static int WIDTH = 40;
-	private static int HEIGHT = 10;
+	private static int HEIGHT = 5;
 
 	
 	public Enemy(int x, int y) {
@@ -21,7 +21,7 @@ public class Enemy {
 	}
 	
 	public void update() {
-		x += (Game.ball.getX() - x - 6);
+		x += (Game.ball.getX() - x - 6) * 0.4;
 		
 	}
 	
